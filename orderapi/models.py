@@ -47,3 +47,20 @@ class OrderItem(models.Model):
 	item = models.ForeignKey(Item)
 	quantity = models.IntegerField(default=1)
 	order = models.ForeignKey(Order, related_name='items')
+
+	@property
+	def title(self):
+		return self.item.title
+
+	@property
+	def description(self):
+		return self.item.description
+
+	@property
+	def unit_price(self):
+		return self.item.unit_price
+
+	@property
+	def SKU(self):
+		return self.item.SKU
+
