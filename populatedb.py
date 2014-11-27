@@ -1,4 +1,4 @@
-from app.models import Order, Customer, Item, Payment, BillingAddress, ShippingAddress, OrderItem
+import os, django
 
 def populate():
 	customer = Customer()
@@ -23,8 +23,13 @@ def populate():
 	billingaddress.zipcode = '78705'
 	billingaddress.city = 'Austin'
 	billingaddress.state = 'TX'
-	orderitem.item = item
-	orderitem.order = order
+	payment.save()
+	customer.save()
+	item.save()
+	billingaddress.save()
+	shippingaddress.save()
+
+
 	order.customer = customer
 	order.shipping_address = shippingaddress
 	order.billing_address = billingaddress
@@ -32,12 +37,6 @@ def populate():
 	order.total_price = 2510.50
 	order.subtotal_price = 2500.00
 	order.total_tax = 10.50
-
-	payment.save()
-	customer.save()
-	item.save()
-	billingaddress.save()
-	shippingaddress.save()
 	order.customer = customer
 	order.shipping_address = shippingaddress
 	order.billing_address = billingaddress
@@ -47,4 +46,10 @@ def populate():
 	orderitem.item = item
 	orderitem.save()
 
-populate()
+if __name__ == '__main__':
+    print "Starting database population script..."
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Ordoro.settings')
+    django.setup()
+    from orderapi.models import Order, Customer, Item, Payment, BillingAddress, ShippingAddress, OrderItem
+    populate()
+    print "done"
