@@ -59,8 +59,8 @@ class Migration(migrations.Migration):
                 ('subtotal_price', models.DecimalField(max_digits=9, decimal_places=2)),
                 ('total_tax', models.DecimalField(max_digits=9, decimal_places=2)),
                 ('order_date', models.DateTimeField(auto_now_add=True)),
-                ('billing_address', models.ForeignKey(to='app.BillingAddress')),
-                ('customer', models.ForeignKey(to='app.Customer')),
+                ('billing_address', models.ForeignKey(to='orderapi.BillingAddress')),
+                ('customer', models.ForeignKey(to='orderapi.Customer')),
             ],
             options={
             },
@@ -71,8 +71,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('quantity', models.IntegerField(default=1)),
-                ('item', models.ForeignKey(to='app.Item')),
-                ('order', models.ForeignKey(related_name='items', to='app.Order')),
+                ('item', models.ForeignKey(to='orderapi.Item')),
+                ('order', models.ForeignKey(related_name='items', to='orderapi.Order')),
             ],
             options={
             },
@@ -108,13 +108,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='order',
             name='payment_details',
-            field=models.ForeignKey(to='app.Payment'),
+            field=models.ForeignKey(to='orderapi.Payment'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='order',
             name='shipping_address',
-            field=models.ForeignKey(to='app.ShippingAddress'),
+            field=models.ForeignKey(to='orderapi.ShippingAddress'),
             preserve_default=True,
         ),
     ]
