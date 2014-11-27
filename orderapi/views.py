@@ -1,12 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from app.models import Order
+from orderapi.models import Order
 import json
 
 orders = []
 
 testOrder = {
-	'orderID' : '1',
+	'id' : '1',
 	'customerID' : '3471328947',
 	'items' : [
 		{
@@ -37,11 +37,14 @@ orders.append(testOrder)
 def index(request):
 	return HttpResponse("it works")
 
-def orderSummary(request, orderID):
-	order = Order.objects.get(orderID=orderID)
+def orderSummary(request):
+	return HttpResponse("orders page")
+
+def orderDetailed(request, pk):
+	order = Order.objects.get(id=pk)
 	return HttpResponse(json.dumps(order), content_type="application/json")
 
 	# for order in orders:
-	# 	if order['orderID'] == orderID:
+	# 	if order['id'] == pk:
 	# 		return HttpResponse(json.dumps(order), content_type="application/json")
 	return HttpResponse("nope")
