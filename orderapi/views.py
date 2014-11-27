@@ -11,7 +11,7 @@ def index(request):
 	return HttpResponse("it works")
 
 @api_view(['GET', 'POST'])
-def orderList(request):
+def orderList(request, format=None):
 	"""
 	List all orders, or create a new order.
 	"""
@@ -28,7 +28,7 @@ def orderList(request):
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def orderDetailed(request, pk):
+def orderDetailed(request, pk, format=None):
 	"""
 	Retrieve, update, or delete an order instance 
 	"""
@@ -48,8 +48,8 @@ def orderDetailed(request, pk):
 			return Response(serializer.data)
 		return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
-        order.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+	elif request.method == 'DELETE':
+		order.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
 
 
