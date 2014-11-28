@@ -7,7 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 def index(request):
-	return HttpResponse("it works")
+	return HttpResponse("Nothing here. Try visiting /api/orders/")
 
 @api_view(['GET', 'POST'])
 def orderList(request, format=None):
