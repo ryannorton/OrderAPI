@@ -2,7 +2,6 @@ from rest_framework import serializers
 from orderapi.models import Order, Customer, Item, Payment, BillingAddress, ShippingAddress, OrderItem
 
 class CustomerSerializer(serializers.ModelSerializer):
-
 	class Meta:
 		model = Customer
 		fields = ('first_name', 'last_name', 'email', 'phone')
@@ -40,11 +39,11 @@ class OrderItemSerializer(serializers.HyperlinkedModelSerializer):
 		fields = ('quantity', 'title', 'description', 'unit_price', 'SKU')
 
 class OrderSerializer(serializers.ModelSerializer):
-	customer = CustomerSerializer()
-	shipping_address = ShippingAddressSerializer()
-	billing_address = BillingAddressSerializer()
-	payment_details = PaymentSerializer()
-	items = OrderItemSerializer(many=True)
+	customer = CustomerSerializer(required=False)
+	shipping_address = ShippingAddressSerializer(required=False)
+	billing_address = BillingAddressSerializer(required=False)
+	payment_details = PaymentSerializer(required=False)
+	items = OrderItemSerializer(many=True, required=False)
 
 	class Meta:
 		model = Order
