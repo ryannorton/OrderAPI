@@ -40,6 +40,7 @@ DELETE | /api/customers/{id}/ | Deletes a customer | ```curl -i -X DELETE ordera
 <p>Follow these instructions if you'd like to run this api locally.</p>
 <ol>
   <li>Clone repo.</li>
+  <li>In Ordoro/settings.py, make sure DEBUG = True.
   <li>From project root, run:</li>
 </ol>
 ```
