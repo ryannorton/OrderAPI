@@ -88,7 +88,14 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = 'staticfiles'
+STATIC_DIRS = (
+    os.path.join(BASE_DIR, 'staticfiles'),
+)
 
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10
 }
+
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'orderapi/templates'),
+)
