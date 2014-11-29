@@ -4,7 +4,7 @@ from orderapi.models import Order, Customer, Item, Payment, BillingAddress, Ship
 class CustomerSerializer(serializers.ModelSerializer):
 	class Meta:
 		model = Customer
-		fields = ('first_name', 'last_name', 'email', 'phone')
+		fields = ('id', 'first_name', 'last_name', 'email', 'phone')
 
 class ItemSerializer(serializers.ModelSerializer):
 	class Meta:
