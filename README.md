@@ -36,6 +36,75 @@ GET | /api/customers/{id}/ | Gets detailed view of customer | ```curl -i orderap
 PUT | /api/customers/{id}/ | Updates a customer's info | ```curl -i -X PUT -d first_name=john orderapi.herokuapp.com/api/customers/1/ -u test:test ```
 DELETE | /api/customers/{id}/ | Deletes a customer | ```curl -i -X DELETE orderapi.herokuapp.com/api/customers/2/ -u test:test ```
 
+<h2> Response Examples </h2>
+<p>GET /api/orders/1/.json </p>
+```
+HTTP 200 OK
+Content-Type: application/json
+Allow: OPTIONS, GET, POST
+Vary: Accept
+
+{
+    "id": 1, 
+    "customer": {
+        "id": "1",
+        "first_name": "Ryan", 
+        "last_name": "Norton", 
+        "email": "nort.ryan@gmail.com", 
+        "phone": "915-630-2890"
+    }, 
+    "items": [
+        {
+            "quantity": 1, 
+            "title": "laptop", 
+            "description": "New 2012 Macbook Pro", 
+            "unit_price": "2500.00", 
+            "SKU": "ky4t234bil"
+        }
+    ], 
+    "total_price": "2510.50", 
+    "subtotal_price": "2500.00", 
+    "total_tax": "10.50", 
+    "order_date": "2014-11-28T23:20:01.554Z", 
+    "shipping_address": {
+        "address1": null, 
+        "address2": null, 
+        "city": null, 
+        "state": null, 
+        "zipcode": null, 
+        "country": "USA"
+    }, 
+    "billing_address": {
+        "address1": null, 
+        "address2": null, 
+        "city": "Austin", 
+        "state": "TX", 
+        "zipcode": "78705", 
+        "country": "USA"
+    }, 
+    "payment_details": {
+        "credit_card_company": "VISA", 
+        "credit_card_number": "**** **** **** 4288", 
+        "credit_card_ccv": "**2"
+    }
+}
+```
+<p>GET /api/customers/1/.json </p>
+```
+HTTP 200 OK
+Content-Type: application/json
+Allow: OPTIONS, GET, DELETE, PUT
+Vary: Accept
+
+{
+    "id": "1",
+    "first_name": "Ryan", 
+    "last_name": "Norton", 
+    "email": "nort.ryan@gmail.com", 
+    "phone": "915-630-2890"
+}
+```
+
 <h2>Local Testing</h2>
 <p>Follow these instructions if you'd like to run this api locally.</p>
 <ol>
